@@ -1,38 +1,218 @@
-.App {
-  text-align: center;
+.text-main {
+  color: #ceb273 !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg-main {
+  background-color: #ceb273 !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.cta-animate {
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.4);
+  }
+
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.4);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Header */
+.logo {
+  width: 120px;
+}
+
+.custom-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.custom-header.glass {
+  background: rgb(26, 26, 46);
+  /* background: rgba(255, 255, 255, 0.2); */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Header */
+
+/* Highlights */
+.highlight-card {
+  transition: all 0.3s ease;
+  background-color: rgb(26, 26, 46);
+}
+
+.highlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.text-main {
+  color: #e4003a;
+  /* Replace with your theme color */
+}
+
+/* Highlights */
+/* Amenities */
+.amenity-card {
+  transition: all 0.3s ease;
+}
+
+.amenity-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.text-main {
+  color: #e4003a;
+  /* Replace with your theme’s accent color */
+}
+
+/* Amenities */
+
+/* Floor Plans */
+.floor-card {
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.floor-card img {
+  transition: all 0.4s ease;
+  opacity: 0.7;
+}
+
+.floor-card:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.floor-card:hover .unlock-overlay {
+  opacity: 1 !important;
+}
+
+.unlock-overlay {
+  transition: opacity 0.4s ease;
+}
+
+.floor-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Floor Plans */
+/* WhatsApp */
+/*Animation for play button */
+@keyframes sample-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.fs-7 {
+  font-size: .7rem !important;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, rgba(128, 116, 119, 0.9), rgba(60, 89, 135, 0.9));
+  backdrop-filter: blur(6px);
+  color: white !important;
+
+}
+
+.whatsapp-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  width: 120px;
+  /* wider to fit text */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #25D366, #1DA851);
+  padding: 10px;
+  text-decoration: none;
+}
+
+.whatsapp-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.whatsapp-text {
   color: white;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none !important;
+
 }
 
-.App-link {
-  color: #61dafb;
+/* Gallery */
+.gallery-item {
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.gallery-item:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2) !important;
 }
+
+.gallery-item:hover>div {
+  background-color: rgba(0, 0, 0, 0.55) !important;
+}
+
+.gallery-item:hover span {
+  opacity: 1 !important;
+}
+
+.transition-all {
+  transition: all 0.4s ease;
+}
+
+/* Gallery */
+
+/* Footer */
+.footer-disclaimer {
+  line-height: 1.6;
+  /* opacity: ; */
+}
+
+footer {
+  background: rgb(26, 26, 46) !important;
+  /* or your preferred dark shade */
+}
+
+footer p {
+  font-size: 13px;
+}
+
+/* Footer */
