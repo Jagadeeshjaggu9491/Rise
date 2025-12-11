@@ -1,0 +1,79 @@
+/* Wrapper Background */
+.thankyou-wrapper {
+    background: #f5f7fa;
+    min-height: 100vh;
+    padding: 40px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card Container */
+.thankyou-card {
+    background: #ffffff;
+    border-radius: 14px;
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Header */
+.thankyou-header {
+    background: #004aad;
+    color: #ffffff;
+    padding: 25px;
+    text-align: center;
+}
+
+.thankyou-header h2 {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Body */
+.thankyou-body {
+    padding: 30px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Info Box */
+.info-box {
+    background: #f0f6ff;
+    border-left: 4px solid #004aad;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.info-box a {
+    color: #004aad;
+    font-weight: 600;
+}
+
+/* Details Table */
+.thankyou-table th {
+    width: 35%;
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.thankyou-table td {
+    background: #ffffff;
+}
+
+.thankyou-table th,
+.thankyou-table td {
+    border-color: #e2e2e2 !important;
+}
+
+/* Footer */
+.thankyou-footer {
+    background: #f0f0f0;
+    font-size: 12px;
+    color: #666;
+    padding: 12px;
+    text-align: center;
+}
