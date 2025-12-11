@@ -24,7 +24,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="p-4 rounded bg-white">
-      <h4 className="mb-3">Contact Us</h4>
+      <h4 className="mb-3 text-center">Contact Us</h4>
 
       <div className="mb-1">
         <label className="form-label">Name</label>
@@ -68,7 +68,9 @@ export default function ContactForm() {
         />
       </div>
 
-      <button className="btn btn-primary bg-main border-0 w-100">Submit</button>
+      <button className="btn btn-primary bg-main border-0 w-100 mt-2">
+        Submit
+      </button>
     </form>
   );
 }

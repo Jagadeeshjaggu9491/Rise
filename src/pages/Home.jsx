@@ -4,8 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 import "../App.css";
 import Logo from "../images/9-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
-import slide1 from "../images/Rise-9-one.jpg";
-import slide2 from "../images/Rise-9-two.jpg";
+import slide1 from "../images/Rise-9-two.jpg";
+import slide2 from "../images/Rise-9-one.jpg";
 import {
   FaRulerCombined,
   FaBuilding,
@@ -23,6 +23,7 @@ import {
   FaArrowsAltV,
   FaUniversity,
   FaCloudSun,
+  FaPhoneAlt,
 } from "react-icons/fa";
 import {
   FaSwimmingPool,
@@ -57,8 +58,22 @@ import gal6 from "../images/gal-6.jpg";
 import gal7 from "../images/gal-7.jpg";
 import gal8 from "../images/gal-8.jpg";
 
+import { Phone, Mail, Instagram, Facebook, Youtube } from "react-icons/fa";
+
 export default function Home() {
+  // Intro Popup
+
+  useEffect(() => {
+    // Show popup automatically after page loads (you can adjust delay)
+    const popupTimer = setTimeout(() => {
+      setShowForm(true);
+    }, 1000); // 0.5 sec after load
+
+    return () => clearTimeout(popupTimer);
+  }, []);
+
   // Header
+
   const [glass, setGlass] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showForm, setShowForm] = useState(false); // For popup
@@ -240,7 +255,7 @@ export default function Home() {
   const galleryImages = [gal1, gal2, gal3, gal4, gal5, gal6, gal7, gal8];
 
   // Whatsapp config
-  const whatsappNumber = "+918897035800"; // replace with your number (country code included, no +)
+  const whatsappNumber = "+919652389333"; // replace with your number (country code included, no +)
   const whatsappMessage = encodeURIComponent(
     "Hello! I am interested in Trilight Rise with 9 (The Trilight Residences). Kindly share the latest brochure, price sheet, and payment structure. Thank you!"
   );
@@ -277,7 +292,11 @@ export default function Home() {
                 Amenities
               </a>
             </li>
-
+            <li>
+              <a href="#gallery" className="text-white text-decoration-none">
+                Gallery
+              </a>
+            </li>
             <li>
               <a
                 href="#floor-plans"
@@ -295,31 +314,32 @@ export default function Home() {
                 Price Sheet
               </a>
             </li>
-
-            <li>
-              <a href="#location" className="text-white text-decoration-none">
-                Location
-              </a>
-            </li>
           </ul>
 
           {/* Button for large screens */}
           <div className="d-none d-lg-block">
             <button
-              className="btn btn-primary border-0 bg-main cta-animate"
+              className="btn btn-primary border-0 bg-main rounded-pill px-4 py-2 cta-animate"
               onClick={handleOpenForm}
             >
               Schedule Site Visit
             </button>
           </div>
           <button
-            className="navbar-toggler d-lg-none border-0"
+            className="navbar-toggler d-lg-none border-0 navbar-dark"
             type="button"
             onClick={handleShowMenu}
+            style={
+              {
+                // backgroundColor: "rgba(255,255,255,0.1)",
+                // borderRadius: "6px",
+              }
+            }
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
+          {/* Offcanvas Menu */}
           {/* Offcanvas Menu */}
           <div
             className={`offcanvas offcanvas-end ${showMenu ? "show" : ""}`}
@@ -334,36 +354,29 @@ export default function Home() {
                 onClick={handleCloseMenu}
               ></button>
             </div>
+
             <div className="offcanvas-body">
               <ul className="list-unstyled">
                 {[
-                  "/",
-                  "/project-highlights",
-                  "/amenities",
-                  "/floor-plans",
-                  "/price-sheet",
-                  "/location",
-                ].map((path, idx) => (
-                  <li className="mb-2" key={idx}>
-                    <NavLink
+                  { label: "Home", link: "#home" },
+                  { label: "Project Highlights", link: "#project-highlights" },
+                  { label: "Amenities", link: "#amenities" },
+                  { label: "Floor Plans", link: "#floor-plans" },
+                  { label: "Price Sheet", link: "#price-sheet" },
+                  { label: "Gallery", link: "#gallery" },
+                ].map((item, idx) => (
+                  <li className="mb-3" key={idx}>
+                    <a
+                      href={item.link}
                       onClick={handleCloseMenu}
-                      className="text-dark text-decoration-none"
-                      to={path}
+                      className="text-dark text-decoration-none fs-5"
                     >
-                      {
-                        [
-                          "Home",
-                          "Project Highlights",
-                          "Amenities",
-                          "Floor Plans",
-                          "Price Sheet",
-                          "Location",
-                        ][idx]
-                      }
-                    </NavLink>
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>
+
               <button
                 className="btn btn-primary border-0 bg-main mt-3 w-100"
                 onClick={() => {
@@ -383,7 +396,7 @@ export default function Home() {
         {/* Right-Side Absolute Form (optional, hidden on small screens) */}
         <div
           className="position-absolute top-50 end-0 translate-middle-y me-4 d-none d-md-block"
-          style={{ zIndex: 20, width: "360px" }}
+          style={{ zIndex: 20, width: "340px" }}
         >
           <ContactForm />
         </div>
@@ -421,7 +434,7 @@ export default function Home() {
                 />
 
                 {/* 🔥 Black Overlay ONLY for first slide */}
-                {index === 0 && (
+                {index === 1 && (
                   <div
                     className="position-absolute top-0 start-0 w-100 h-100"
                     style={{ background: "rgba(0,0,0,0.55)", zIndex: 1 }}
@@ -438,11 +451,21 @@ export default function Home() {
                 >
                   <div className="container">
                     <div className="row justify-content-center">
-                      <div className="col-lg-5 text-center">
-                        <h1 className="fw-bold display-5">{slide.title}</h1>
+                      <div className="col-lg-7 text-center">
+                        <motion.h2
+                          className="text-center display-3 fw-light mb-3 text-uppercase tracking-wider"
+                          style={{ color: "#BFA05B", letterSpacing: "0.2em" }}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8 }}
+                        >
+                          {slide.title}
+                        </motion.h2>
+                        {/* <h1 className="fw-bold display-5">{slide.title}</h1> */}
                         <p className="fs-4 mt-3">{slide.desc}</p>
                         <button
-                          className="btn btn-primary bg-main border-0 px-4 py-2 mt-3 fw-semibold cta-animate"
+                          className="btn btn-primary rounded-pill bg-main border-0 px-4 py-2 mt-3 fw-semibold cta-animate"
                           onClick={handleOpenForm}
                         >
                           Book Your Dream Home
@@ -478,7 +501,7 @@ export default function Home() {
       </section>
 
       {/* Project Highlights */}
-      <section className="py-5">
+      <section className="py-5" id="project-highlights">
         <div className="container">
           <div className="text-center mb-5">
             <motion.h2
@@ -500,7 +523,7 @@ export default function Home() {
             {highlights.map((item, index) => (
               <motion.div
                 key={index}
-                className="col-lg-4 col-md-6"
+                className="col-lg-4 col-md-4 col-6"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -518,7 +541,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="py-5">
+      <section className="py-5" id="about">
         <div className="container">
           <div className="row align-items-center g-5">
             {/* LEFT — IMAGE */}
@@ -613,7 +636,7 @@ export default function Home() {
       </section>
 
       {/* Amenities */}
-      <section className="py-5 bg-light">
+      <section className="py-5 bg-light" id="amenities">
         <div className="container">
           <div className="text-center mb-5">
             <motion.h2
@@ -636,7 +659,7 @@ export default function Home() {
             {amenities.map((item, idx) => (
               <motion.div
                 key={idx}
-                className="col-lg-3 col-md-4 col-sm-6"
+                className="col-lg-3 col-md-4 col-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
@@ -650,11 +673,22 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          {/* Button */}
+          <div className="text-center mt-4">
+            <motion.button
+              className="btn bg-main text-white px-4 py-2 rounded-pill fw-semibold"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleOpenForm}
+            >
+              Explore More
+            </motion.button>
+          </div>
         </div>
       </section>
 
       {/* Gallery */}
-      <section className="py-5 py-lg-7 bg-white">
+      <section className="py-5 py-lg-7 bg-white" id="gallery">
         <div className="container">
           {/* Section Title */}
           <motion.h2
@@ -693,8 +727,111 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Floor Plans */}
+      <section className="py-5 py-lg-7 bg-light" id="floor-plans">
+        <div className="container">
+          <div className="row align-items-center g-5 g-xl-7">
+            {/* LEFT SIDE – Content + Button */}
+            <div className="col-lg-6">
+              <motion.h2
+                className="text display-5 fw-light mb-3 text-uppercase tracking-wider"
+                style={{ color: "#BFA05B", letterSpacing: "0.2em" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                Floor Plans
+              </motion.h2>
+
+              <motion.p
+                className="lead text-muted mb-4"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.7 }}
+              >
+                A signature highlight of Rise with 9 is the{" "}
+                <strong>22-ft. double-height living area</strong>, a design
+                element usually reserved for premium villas, which provides a
+                sense of grandeur and abundant natural light.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.7 }}
+              >
+                <p className="text-secondary mb-5">
+                  Picture the perfect Sunday light streaming into your spacious
+                  living room, a gentle breeze moving through an intelligently
+                  designed layout where every corner feels both open and
+                  intimately yours. This is the thoughtful foundation of every
+                  home at Rise with 9.
+                </p>
+
+                <button
+                  className="btn btn-dark bg-main border-0 btn-lg px-5 rounded-pill shadow-sm fw-semibold"
+                  onClick={handleOpenForm}
+                >
+                  Download Brochure
+                </button>
+              </motion.div>
+            </div>
+
+            {/* RIGHT SIDE – 2×2 Grid */}
+            <div className="col-lg-6">
+              <div className="row g-4 g-xl-5">
+                {floorPlans.map((plan, index) => (
+                  <motion.div
+                    key={plan.id}
+                    className="col-6"
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.15, duration: 0.7 }}
+                  >
+                    <div className="floor-card position-relative rounded overflow-hidden shadow-lg">
+                      {/* Image with default 50% opacity */}
+                      <img
+                        src={plan.img}
+                        alt={plan.title}
+                        className="img-fluid w-100 h-100 transition-all"
+                        style={{ objectFit: "cover" }}
+                      />
+
+                      {/* Hover Overlay with Unlock Button */}
+                      <div className="unlock-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-70 d-flex align-items-center justify-content-center opacity-0">
+                        <button
+                          className="btn btn-warning btn-md-lg text-white bg-main border-0 fw-bold px-md-5 py-md-3 rounded-pill shadow-lg"
+                          onClick={handleOpenForm}
+                        >
+                          Unlock Floor Plan
+                        </button>
+                      </div>
+
+                      {/* Title at Bottom */}
+                      <div
+                        className="position-absolute bottom-0 start-0 w-100 p-4 text-center text-white"
+                        style={{
+                          background:
+                            "linear-gradient(transparent, rgba(0,0,0,0.9))",
+                        }}
+                      >
+                        <h6 className="mb-0 fw-bold">{plan.title}</h6>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Price Sheet */}
-      <section className="py-5 py-lg-7 bg-light">
+      <section className="py-5 py-lg-7 " id="price-sheet">
         <div className="container">
           {/* Section Title */}
           <motion.h2
@@ -828,109 +965,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Floor Plans */}
-      <section className="py-5 py-lg-7">
-        <div className="container">
-          <div className="row align-items-center g-5 g-xl-7">
-            {/* LEFT SIDE – Content + Button */}
-            <div className="col-lg-6">
-              <motion.h2
-                className="text display-5 fw-light mb-3 text-uppercase tracking-wider"
-                style={{ color: "#BFA05B", letterSpacing: "0.2em" }}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                Floor Plans
-              </motion.h2>
-
-              <motion.p
-                className="lead text-muted mb-4"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.7 }}
-              >
-                A signature highlight of Rise with 9 is the{" "}
-                <strong>22-ft. double-height living area</strong>, a design
-                element usually reserved for premium villas, which provides a
-                sense of grandeur and abundant natural light.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.7 }}
-              >
-                <p className="text-secondary mb-5">
-                  Picture the perfect Sunday light streaming into your spacious
-                  living room, a gentle breeze moving through an intelligently
-                  designed layout where every corner feels both open and
-                  intimately yours. This is the thoughtful foundation of every
-                  home at Rise with 9.
-                </p>
-
-                <button
-                  className="btn btn-dark bg-main border-0 btn-lg px-5 rounded-pill shadow-sm fw-semibold"
-                  onClick={handleOpenForm}
-                >
-                  Download Brochure
-                </button>
-              </motion.div>
-            </div>
-
-            {/* RIGHT SIDE – 2×2 Grid */}
-            <div className="col-lg-6">
-              <div className="row g-4 g-xl-5">
-                {floorPlans.map((plan, index) => (
-                  <motion.div
-                    key={plan.id}
-                    className="col-6"
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15, duration: 0.7 }}
-                  >
-                    <div className="floor-card position-relative rounded overflow-hidden shadow-lg">
-                      {/* Image with default 50% opacity */}
-                      <img
-                        src={plan.img}
-                        alt={plan.title}
-                        className="img-fluid w-100 h-100 transition-all"
-                        style={{ objectFit: "cover" }}
-                      />
-
-                      {/* Hover Overlay with Unlock Button */}
-                      <div className="unlock-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-70 d-flex align-items-center justify-content-center opacity-0">
-                        <button
-                          className="btn btn-warning btn-lg fw-bold px-5 py-3 rounded-pill shadow-lg"
-                          onClick={handleOpenForm}
-                        >
-                          Unlock Floor Plan
-                        </button>
-                      </div>
-
-                      {/* Title at Bottom */}
-                      <div
-                        className="position-absolute bottom-0 start-0 w-100 p-4 text-center text-white"
-                        style={{
-                          background:
-                            "linear-gradient(transparent, rgba(0,0,0,0.9))",
-                        }}
-                      >
-                        <h6 className="mb-0 fw-bold">{plan.title}</h6>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ's */}
       <section className="py-5 py-lg-7 bg-light">
         <div className="container">
@@ -1006,6 +1040,151 @@ export default function Home() {
             >
               Book Free Site Visit
             </motion.button>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="w-100 py-5 contact-bg">
+        <div className="container">
+          <div className="row g-4">
+            {/* -------------------------------------- */}
+            {/* LEFT SIDE */}
+            {/* -------------------------------------- */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="col-lg-6"
+            >
+              <div
+                className="p-5 rounded-4 h-100"
+                style={{
+                  background:
+                    "linear-gradient(145deg, rgba(70,70,70,0.4), rgba(40,40,40,0.4))",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                <img src={Logo} className="img-fluid mb-4" alt="Rise With 9" />
+
+                <h1 className="text-main fw-bold display-4">Rise With 9</h1>
+
+                <p className="text-main fs-3 mt-3">
+                  9 is not just a number
+                  <br />
+                  it's a narrative
+                </p>
+
+                <hr className="border-white opacity-25 mt-5 mb-3" />
+
+                <p className="text-white fw-semibold text-center">
+                  TGRERA No: P024000009942
+                </p>
+
+                {/* Social Icons */}
+                <div className="d-flex gap-3 mt-3">
+                  {/* <Facebook className="text-warning" />
+                  <Instagram className="text-warning" />
+                  <Youtube className="text-warning" /> */}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* -------------------------------------- */}
+            {/* RIGHT SIDE - FORM */}
+            {/* -------------------------------------- */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="col-lg-6 col-12"
+            >
+              <div
+                className="p-5 p-md-4 p-3 rounded-4 h-100"
+                style={{
+                  background:
+                    "linear-gradient(145deg, rgba(70,70,70,0.4), rgba(40,40,40,0.4))",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                <h2 className="text-white text-center mb-4 fs-2 fs-md-1">
+                  CONTACT US
+                </h2>
+
+                {/* Form */}
+                <div className="d-flex flex-column gap-3">
+                  <input
+                    type="text"
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Your Name"
+                  />
+
+                  <input
+                    type="email"
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Email Address"
+                  />
+
+                  <input
+                    type="text"
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Phone Number"
+                  />
+
+                  {/* Checkbox */}
+                  <div className="d-flex align-items-start">
+                    <input type="checkbox" className="me-2 mt-1" />
+                    <p className="text-white small m-0">
+                      I agree to receive communications about Rise With 9 and
+                      accept the terms & conditions. I may be contacted via
+                      phone, SMS, email, or WhatsApp for updates & offers. Your
+                      information will remain confidential.
+                    </p>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="d-flex flex-column flex-md-row gap-3">
+                    <button
+                      className="btn btn-warning bg-main border-1 px-4 py-3 fw-semibold w-100"
+                      style={{ borderRadius: "10px" }}
+                      onClick={handleOpenForm}
+                    >
+                      Schedule Your Visit
+                    </button>
+
+                    <button
+                      className="btn btn-outline-warning px-4 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2 w-100"
+                      style={{ borderRadius: "10px" }}
+                      onClick={handleOpenForm}
+                    >
+                      <i className="bi bi-download"></i> Download Brochure
+                    </button>
+                  </div>
+
+                  <hr className="border-secondary" />
+
+                  {/* Contact Info */}
+                  <div className="d-flex flex-wrap gap-3 align-items-center justify-content-center text-white mt-2 text-center">
+                    <a
+                      href="tel:+919652389333"
+                      className="d-flex align-items-center justify-content-center gap-2 text-decoration-none flex-wrap"
+                    >
+                      <span className="text-white fw-semibold fs-6">
+                        Call Us:
+                      </span>
+
+                      <FaPhoneAlt className="text-main fs-4" />
+
+                      <span className="text-main fw-bold fs-4">
+                        +91 96523 89333
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

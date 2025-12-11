@@ -3,7 +3,7 @@
 }
 
 .bg-main {
-  background-color: #ceb273 !important;
+  background-color: #d0ab57 !important;
 }
 
 .cta-animate {
@@ -49,6 +49,7 @@
   /* -webkit-backdrop-filter: blur(10px); */
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 
 /* Header */
 
@@ -199,7 +200,15 @@
 }
 
 /* Gallery */
+/* Contact */
+.contact-bg {
+  background-image: url(../src/images/Rise-9-two.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
+/* Contact */
 /* Footer */
 .footer-disclaimer {
   line-height: 1.6;
@@ -207,8 +216,9 @@
 }
 
 footer {
-  background: rgb(26, 26, 46) !important;
+  background: rgb(13 13 31) !important;
   /* or your preferred dark shade */
+  border-top: 1px solid rgba(255, 255, 255, 0.351);
 }
 
 footer p {
