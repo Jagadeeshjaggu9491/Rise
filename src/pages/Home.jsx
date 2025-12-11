@@ -392,18 +392,21 @@ export default function Home() {
       </header>
 
       {/* Banner Section */}
-      <section className="position-relative">
-        {/* Right-Side Absolute Form (optional, hidden on small screens) */}
+      {/* <section className="position-relative">
         <div
-          className="position-absolute top-50 end-0 translate-middle-y me-4 d-none d-md-block"
+          className="position-absolute top-50 end-0 translate-middle-y me-4 d-none d-lg-block"
           style={{ zIndex: 20, width: "340px" }}
         >
           <ContactForm />
         </div>
 
-        {/* Bootstrap Carousel */}
-        <div id="heroSlider" className="carousel slide" data-bs-ride="carousel">
-          {/* Indicators */}
+        <div
+          id="heroSlider"
+          className="carousel slide"
+          data-bs-ride="carousel"
+          data-bs-pause="false"
+        >
+
           <div className="carousel-indicators" style={{ zIndex: 15 }}>
             {slides.map((_, index) => (
               <button
@@ -417,7 +420,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Carousel Items */}
           <div className="carousel-inner">
             {slides.map((slide, index) => (
               <div
@@ -425,7 +427,6 @@ export default function Home() {
                 className={`carousel-item ${index === 0 ? "active" : ""}`}
                 style={{ position: "relative" }}
               >
-                {/* Background Image */}
                 <img
                   src={slide.img}
                   className="d-block w-100"
@@ -433,7 +434,6 @@ export default function Home() {
                   alt={slide.title}
                 />
 
-                {/* 🔥 Black Overlay ONLY for first slide */}
                 {index === 1 && (
                   <div
                     className="position-absolute top-0 start-0 w-100 h-100"
@@ -441,7 +441,6 @@ export default function Home() {
                   ></div>
                 )}
 
-                {/* Center Content */}
                 <motion.div
                   className="position-absolute top-50 start-50 translate-middle text-white w-100"
                   initial={{ opacity: 0, y: 60 }}
@@ -462,7 +461,6 @@ export default function Home() {
                         >
                           {slide.title}
                         </motion.h2>
-                        {/* <h1 className="fw-bold display-5">{slide.title}</h1> */}
                         <p className="fs-4 mt-3">{slide.desc}</p>
                         <button
                           className="btn btn-primary rounded-pill bg-main border-0 px-4 py-2 mt-3 fw-semibold cta-animate"
@@ -478,7 +476,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Carousel Controls */}
           <button
             className="carousel-control-prev"
             type="button"
@@ -497,6 +494,213 @@ export default function Home() {
           >
             <span className="carousel-control-next-icon"></span>
           </button>
+        </div>
+      </section> */}
+      <section
+        className="position-relative d-flex align-items-center justify-content-center w-100"
+        style={{
+          height: "100vh",
+          width: "100vw", // ✅ 100vw added
+          padding: "0 10vw",
+          overflow: "hidden",
+        }}
+      >
+        <div></div>
+        {/* Background Vimeo Video */}
+        <iframe
+          src="https://player.vimeo.com/video/1124732685?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;background=1"
+          loading="lazy"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          title="FOR ABHINAV WEBSITE (1)"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: "100vw", // ✔ matches your requirement
+            height: "56.25vw",
+            minWidth: "177.78vh",
+            minHeight: "100vh",
+            transform: "translate(-50%, -50%)",
+            border: "none",
+            zIndex: 1,
+          }}
+        ></iframe>
+
+        {/* Optional Black Overlay */}
+        <div
+          className="position-absolute w-100 h-100 top-0 start-0"
+          style={{
+            background: "rgba(0,0,0,0.35)",
+            zIndex: 2,
+          }}
+        ></div>
+
+        {/* Content */}
+        {/* <div
+          className="position-relative text-white text-center"
+          style={{ zIndex: 3, maxWidth: "800px" }}
+        >
+          <h1 className="display-3 fw-bold">Your Title Here</h1>
+          <p className="lead mt-3">Your subtitle or description goes here.</p>
+
+          <button className="btn btn-warning px-4 py-3 fw-semibold mt-3">
+            Explore Now
+          </button>
+        </div> */}
+      </section>
+
+      {/* Mobile Form */}
+      {/* Contact */}
+      <section className="w-100 py-5 contact-bg">
+        <div className="container">
+          <div className="row g-4">
+            {/* -------------------------------------- */}
+            {/* LEFT SIDE */}
+            {/* -------------------------------------- */}
+            <motion.div
+              d-md-none
+              d-block
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="col-lg-6"
+            >
+              <div
+                className="p-5 rounded-4 h-100"
+                style={{
+                  background:
+                    "linear-gradient(145deg, rgba(70,70,70,0.4), rgba(40,40,40,0.4))",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                <img src={Logo} className="img-fluid mb-4" alt="Rise With 9" />
+
+                <h1 className="text-main fw-bold display-4">Rise With 9</h1>
+
+                <p className="text-main fs-3 mt-3">
+                  9 is not just a number
+                  <br />
+                  it's a narrative
+                </p>
+
+                <hr className="border-white opacity-25 mt-5 mb-3" />
+
+                <p className="text-white fw-semibold text-center">
+                  TGRERA No: P024000009942
+                </p>
+
+                {/* Social Icons */}
+                <div className="d-flex gap-3 mt-3">
+                  {/* <Facebook className="text-warning" />
+                  <Instagram className="text-warning" />
+                  <Youtube className="text-warning" /> */}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* -------------------------------------- */}
+            {/* RIGHT SIDE - FORM */}
+            {/* -------------------------------------- */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="col-lg-6 col-12"
+            >
+              <div
+                className="p-5 p-md-4 p-3 rounded-4 h-100"
+                style={{
+                  background:
+                    "linear-gradient(145deg, rgba(70,70,70,0.4), rgba(40,40,40,0.4))",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  backdropFilter: "blur(5px)",
+                }}
+              >
+                <h2 className="text-white text-center mb-4 fs-2 fs-md-1">
+                  CONTACT US
+                </h2>
+
+                {/* Form */}
+                <div className="d-flex flex-column gap-3">
+                  <input
+                    type="text"
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Your Name"
+                  />
+
+                  <input
+                    type="email"
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Email Address"
+                  />
+
+                  <input
+                    type="text"
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Phone Number"
+                  />
+
+                  {/* ⭐ Textarea Added */}
+                  <textarea
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Your Message"
+                    rows="4"
+                  ></textarea>
+
+                  {/* Checkbox */}
+                  <div className="d-flex align-items-start">
+                    <input type="checkbox" className="me-2 mt-1" />
+                    <p className="text-white small m-0">
+                      I agree to receive communications about Rise With 9 and
+                      accept the terms & conditions. I may be contacted via
+                      phone, SMS, email, or WhatsApp for updates & offers. Your
+                      information will remain confidential.
+                    </p>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="d-flex flex-column flex-md-row gap-3">
+                    <button
+                      className="btn btn-warning bg-main border-1 px-4 py-3 fw-semibold w-100"
+                      style={{ borderRadius: "10px" }}
+                      onClick={handleOpenForm}
+                    >
+                      Schedule Your Visit
+                    </button>
+
+                    <button
+                      className="btn btn-outline-warning px-4 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2 w-100"
+                      style={{ borderRadius: "10px" }}
+                      onClick={handleOpenForm}
+                    >
+                      <i className="bi bi-download"></i> Download Brochure
+                    </button>
+                  </div>
+
+                  <hr className="border-secondary" />
+
+                  {/* Contact Info */}
+                  <div className="d-flex flex-wrap gap-3 align-items-center justify-content-center text-white mt-2 text-center">
+                    <a
+                      href="tel:+919652389333"
+                      className="d-flex align-items-center justify-content-center gap-2 text-decoration-none flex-wrap"
+                    >
+                      <span className="text-white fw-semibold fs-6">
+                        Call Us:
+                      </span>
+                      <FaPhoneAlt className="text-main fs-4" />
+                      <span className="text-main fw-bold fs-4">
+                        +91 96523 89333
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1133,6 +1337,13 @@ export default function Home() {
                     placeholder="Phone Number"
                   />
 
+                  {/* ⭐ Textarea Added */}
+                  <textarea
+                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
+                    placeholder="Your Message"
+                    rows="4"
+                  ></textarea>
+
                   {/* Checkbox */}
                   <div className="d-flex align-items-start">
                     <input type="checkbox" className="me-2 mt-1" />
@@ -1174,9 +1385,7 @@ export default function Home() {
                       <span className="text-white fw-semibold fs-6">
                         Call Us:
                       </span>
-
                       <FaPhoneAlt className="text-main fs-4" />
-
                       <span className="text-main fw-bold fs-4">
                         +91 96523 89333
                       </span>
