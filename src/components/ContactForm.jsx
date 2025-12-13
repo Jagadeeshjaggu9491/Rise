@@ -7,7 +7,7 @@ export default function ContactForm() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    mobile: "",
+    phone: "",
     message: "",
   });
 
@@ -24,7 +24,7 @@ export default function ContactForm() {
     const formData = new FormData();
     formData.append("name", form.name);
     formData.append("email", form.email);
-    formData.append("mobile", form.mobile);
+    formData.append("phone", form.phone);
     formData.append("message", form.message);
 
     try {
@@ -68,7 +68,7 @@ export default function ContactForm() {
         <label className="form-label">Phone Number</label>
         <input
           type="tel"
-          name="mobile"
+          name="phone"
           className="form-control"
           onChange={handleChange}
           required
@@ -95,6 +95,16 @@ export default function ContactForm() {
           onChange={handleChange}
           required
         />
+      </div>
+
+      <div className="d-flex align-items-start">
+        <input type="checkbox" className="me-2 mt-1" required />
+        <p className="text-black small m-0">
+          I agree to receive communications about Rise With 9 and accept the
+          terms & conditions. I may be contacted via phone, SMS, email, or
+          WhatsApp for updates & offers. Your information will remain
+          confidential.
+        </p>
       </div>
 
       <button

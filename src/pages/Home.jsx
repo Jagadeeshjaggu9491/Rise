@@ -1,4 +1,5 @@
 import ContactForm from "../components/ContactForm";
+import SectionForm from "../components/SectionForm";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../App.css";
@@ -61,6 +62,43 @@ import gal8 from "../images/gal-8.jpg";
 import { Phone, Mail, Instagram, Facebook, Youtube } from "react-icons/fa";
 
 export default function Home() {
+
+
+  // const [form, setForm] = useState({
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   message: "",
+  // });
+
+  // const [loading, setLoading] = useState(false);
+
+  // function handleChange(e) {
+  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const formData = new FormData(e.target);
+
+  //   try {
+  //     const res = await fetch("https://YOURDOMAIN.com/contact.php", {
+  //       method: "POST",
+  //       body: formData
+  //     });
+
+  //     const data = await res.json();
+
+  //     if (data.status === "success") {
+  //       window.location.href = "/thank-you";  // ✅ Redirect here
+  //     } else {
+  //       console.error("Submission failed:", data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error);
+  //   }
+  // };
   // Intro Popup
 
   useEffect(() => {
@@ -260,6 +298,9 @@ export default function Home() {
     "Hello! I am interested in Trilight Rise with 9 (The Trilight Residences). Kindly share the latest brochure, price sheet, and payment structure. Thank you!"
   );
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+
+
 
   return (
     <div>
@@ -624,61 +665,9 @@ export default function Home() {
                 </h2>
 
                 {/* Form */}
-                <div className="d-flex flex-column gap-3">
-                  <input
-                    type="text"
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Your Name"
-                  />
+                <div className="">
+                  <SectionForm />
 
-                  <input
-                    type="email"
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Email Address"
-                  />
-
-                  <input
-                    type="text"
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Phone Number"
-                  />
-
-                  {/* ⭐ Textarea Added */}
-                  <textarea
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Your Message"
-                    rows="4"
-                  ></textarea>
-
-                  {/* Checkbox */}
-                  <div className="d-flex align-items-start">
-                    <input type="checkbox" className="me-2 mt-1" />
-                    <p className="text-white small m-0">
-                      I agree to receive communications about Rise With 9 and
-                      accept the terms & conditions. I may be contacted via
-                      phone, SMS, email, or WhatsApp for updates & offers. Your
-                      information will remain confidential.
-                    </p>
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="d-flex flex-column flex-md-row gap-3">
-                    <button
-                      className="btn btn-warning bg-main border-1 px-4 py-3 fw-semibold w-100"
-                      style={{ borderRadius: "10px" }}
-                      onClick={handleOpenForm}
-                    >
-                      Schedule Your Visit
-                    </button>
-
-                    <button
-                      className="btn btn-outline-warning px-4 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2 w-100"
-                      style={{ borderRadius: "10px" }}
-                      onClick={handleOpenForm}
-                    >
-                      <i className="bi bi-download"></i> Download Brochure
-                    </button>
-                  </div>
 
                   <hr className="border-secondary" />
 
@@ -1318,61 +1307,9 @@ export default function Home() {
                 </h2>
 
                 {/* Form */}
-                <div className="d-flex flex-column gap-3">
-                  <input
-                    type="text"
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Your Name"
-                  />
+                <div className="">
+                  <SectionForm />
 
-                  <input
-                    type="email"
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Email Address"
-                  />
-
-                  <input
-                    type="text"
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Phone Number"
-                  />
-
-                  {/* ⭐ Textarea Added */}
-                  <textarea
-                    className="form-control text-white py-3 bg-light bg-opacity-50 border-0"
-                    placeholder="Your Message"
-                    rows="4"
-                  ></textarea>
-
-                  {/* Checkbox */}
-                  <div className="d-flex align-items-start">
-                    <input type="checkbox" className="me-2 mt-1" />
-                    <p className="text-white small m-0">
-                      I agree to receive communications about Rise With 9 and
-                      accept the terms & conditions. I may be contacted via
-                      phone, SMS, email, or WhatsApp for updates & offers. Your
-                      information will remain confidential.
-                    </p>
-                  </div>
-
-                  {/* Buttons */}
-                  <div className="d-flex flex-column flex-md-row gap-3">
-                    <button
-                      className="btn btn-warning bg-main border-1 px-4 py-3 fw-semibold w-100"
-                      style={{ borderRadius: "10px" }}
-                      onClick={handleOpenForm}
-                    >
-                      Schedule Your Visit
-                    </button>
-
-                    <button
-                      className="btn btn-outline-warning px-4 py-3 fw-semibold d-flex align-items-center justify-content-center gap-2 w-100"
-                      style={{ borderRadius: "10px" }}
-                      onClick={handleOpenForm}
-                    >
-                      <i className="bi bi-download"></i> Download Brochure
-                    </button>
-                  </div>
 
                   <hr className="border-secondary" />
 

@@ -5,7 +5,7 @@ import "../Styles/thank-you.css";
 function ThankYou({ name, phone, email, message }) {
     const year = new Date().getFullYear();
 
-    useEffect(() => {
+     useEffect(() => {
         // Google Ads Conversion Tracking (Thank You Page Only)
         if (typeof window.gtag === "function") {
             window.gtag("event", "conversion", {
